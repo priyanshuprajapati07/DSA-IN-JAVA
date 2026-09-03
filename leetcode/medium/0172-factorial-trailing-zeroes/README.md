@@ -49,26 +49,33 @@ Output: 0
 ## Solution
 
 **Language:** Java  
-**Runtime:** 0 ms  
-**Memory:** 42 MB  
-**Submitted:** 2026-09-03T04:21:41.502Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 42.5 MB (beats 35.55%)  
+**Submitted:** 2026-09-03T04:23:21.347Z  
 
 ```java
 class Solution {
     public int trailingZeroes(int n) {
-        int fact = 1;
-        for (int i = 1; i<=n; i++){
-            fact *=i;
-        }
-        int count = 0;
-        while(fact<=n){
-            int last = fact%10;
-            fact = fact/10;
-            if(last == 0){
-                count++;
-            }
-        }
-       return count++;
+    //     int fact = 1;
+    //     for (int i = 1; i<=n; i++){
+    //         fact *=i;
+    //     }
+    //     int count = 0;
+    //     while(fact!=0){
+    //         int last = fact%10;
+    //         fact = fact/10;
+    //         if(last == 0){
+    //             count++;
+    //         }
+    //     }
+    //    return count++;
+
+    int ans = 0;
+    while(n>=5){
+        n = n /5;
+        ans +=n;
+    }
+    return ans;
     }
 }
 ```
