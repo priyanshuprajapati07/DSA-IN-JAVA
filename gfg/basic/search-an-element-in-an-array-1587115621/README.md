@@ -37,7 +37,7 @@ Explanation: The element to be searched is 6 and it is not present, so we return
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-07T07:16:27.350Z  
+**Submitted:** 2026-09-07T07:18:30.714Z  
 
 ```java
 class Solution {
