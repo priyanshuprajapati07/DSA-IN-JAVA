@@ -29,24 +29,25 @@ Explanation: There are no 0s in the given array, so the modified array is [1, 1]
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-11T07:41:53.052Z  
+**Submitted:** 2026-09-11T08:34:36.181Z  
 
 ```java
 class Solution {
     void segregate0and1(int[] arr) {
         // code here
-        int left = 0;
-        int right = arr.length-1;
+        // int left = 0;
+        // int right = arr.length-1;
         
-        while(left<right){
-            if(arr[left]==1 && arr[right]==0){
-                //swap
-                arr[left] =0;
-                arr[right] = 1;
-            }
-            if(arr[left]==0) left++;
-            if(arr[right]==1) right--; 
-        }
+        // while(left<right){
+        //     if(arr[left]==1 && arr[right]==0){
+        //         //swap
+        //         arr[left] =0;
+        //         arr[right] = 1;
+        //     }
+        //     if(arr[left]==0) left++;
+        //     if(arr[right]==1) right--; 
+        // }
+        Arrays.sort(arr);
     }
 }
 
