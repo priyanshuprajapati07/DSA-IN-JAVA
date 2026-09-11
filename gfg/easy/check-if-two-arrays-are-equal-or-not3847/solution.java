@@ -1,0 +1,17 @@
+class Solution {
+    public static boolean checkEqual(int[] a, int[] b) {
+        // code here
+        int m = a.length;
+        int n = b.length;
+        
+        if(m!=n) return false;
+        Arrays.sort(a);
+        Arrays.sort(b);
+        
+        for(int i = 0; i <m; i++){
+            if (a[i]!= b[i]) return false;
+        }
+        
+        return true;
+    }
+}
