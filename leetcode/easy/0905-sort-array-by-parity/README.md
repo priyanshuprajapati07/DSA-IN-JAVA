@@ -1,0 +1,68 @@
+# Sort Array By Parity
+
+![Difficulty](https://img.shields.io/badge/Difficulty-Easy-green)
+
+## Problem
+
+Given an integer array `nums`, move all the even integers at the beginning of the array followed by all the odd integers.
+
+Return  ***any array**  that satisfies this condition*.
+
+ 
+
+ **Example 1:** 
+
+```
+Input: nums = [3,1,2,4]
+Output: [2,4,3,1]
+Explanation: The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
+
+```
+
+ **Example 2:** 
+
+```
+Input: nums = [0]
+Output: [0]
+
+```
+
+ 
+
+ **Constraints:** 
+
+- 1 <= nums.length <= 5000
+- 0 <= nums[i] <= 5000
+
+## Solution
+
+**Language:** Java  
+**Runtime:** 1 ms (beats 44.88%)  
+**Memory:** 47.2 MB (beats 5.22%)  
+**Submitted:** 2026-09-11T09:00:29.555Z  
+
+```java
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int left = 0;
+        int right = nums.length-1;
+        while(left < right){
+            // swap 
+             if(nums[left]%2==1 && nums[right]%2==0){
+                int x = nums[left];
+                nums[left] = nums[right];
+                nums[right] = x;
+             }
+
+             if(nums[left]%2==0) left++;
+             if(nums[right]%2==1) right--;
+        }
+        return nums;
+
+    }
+}
+```
+
+---
+
+[View on LeetCode](https://leetcode.com/problems/sort-array-by-parity/)
