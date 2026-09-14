@@ -47,16 +47,31 @@ The array has one each of 0, 1, and 2, arranged in-place in the order 0, 1, 2.
 ## Solution
 
 **Language:** Java  
-**Runtime:** 3 ms (beats 9.60%)  
-**Memory:** 43.7 MB (beats 8.30%)  
-**Submitted:** 2026-09-11T09:08:59.202Z  
+**Runtime:** 0 ms (beats 100.00%)  
+**Memory:** 43.4 MB (beats 76.09%)  
+**Submitted:** 2026-09-14T04:05:36.691Z  
 
 ```java
 class Solution {
     public void sortColors(int[] nums) {
-        Arrays.sort(nums);
+        int zero = 0;
+        int one = 0;
+        int two = 0;
+       
+        for(int x : nums){
+            if(x == 0) zero++;
+            else if (x == 1) one++; // Fixed: changed 'if else' to 'else if'
+            else two++;
+        }
+
+        int k = 0;
+        // Fixed: changed '==' to '=' to actually assign the numbers
+        for(int i = 1; i <= zero; i++) nums[k++] = 0;
+        for(int i = 1; i <= one; i++) nums[k++] = 1;
+        for(int i = 1; i <= two; i++) nums[k++] = 2;
     }
 }
+
 ```
 
 ---
