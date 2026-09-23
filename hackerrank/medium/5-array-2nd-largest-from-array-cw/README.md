@@ -59,7 +59,7 @@ Explanation
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-23T04:10:12.279Z  
+**Submitted:** 2026-09-23T04:11:51.124Z  
 
 ```java
 import java.io.*;
@@ -74,29 +74,36 @@ public class Main {
             return;
         }
 
-        // Initialize variables with the smallest possible integer value
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MIN_VALUE;
+        // Initialize trackers manually using the first element
+        int largest = arr[0];
+        
+        // Use a flag to track if we have found a valid second largest number yet
+        int secondLargest = -1; 
+        boolean hasSecondLargest = false;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             int current = arr[i];
 
             // Case 1: Current element is greater than the largest found so far
             if (current > largest) {
                 secondLargest = largest;
                 largest = current;
+                hasSecondLargest = true;
             } 
             // Case 2: Current element is strictly between largest and second largest
-            else if (current > secondLargest && current != largest) {
-                secondLargest = current;
+            else if (current != largest) {
+                if (!hasSecondLargest || current > secondLargest) {
+                    secondLargest = current;
+                    hasSecondLargest = true;
+                }
             }
         }
 
-        // If secondLargest was never updated, it means all elements were identical
-        if (secondLargest == Integer.MIN_VALUE) {
-            System.out.println(-1);
-        } else {
+        // Output the result based on the tracking flag
+        if (hasSecondLargest) {
             System.out.println(secondLargest);
+        } else {
+            System.out.println(-1);
         }
     }
 
