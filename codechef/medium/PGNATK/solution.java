@@ -9,12 +9,12 @@ class Codechef
 		// your code goes here
 		Scanner sc = new Scanner(System.in);
 		if(sc.hasNextInt()){
-		    int t = sc.nextInt();
+		    int t=sc.nextInt();
 		    
-		    while (t-- > 0){
-		        int n = sc.nextInt();
-		        int k = sc.nextInt();
-		        int totalMinutes = n + (n-1)/(k-1);
+		    while(t-- > 0){
+		        int n=sc.nextInt();
+		        int k=sc.nextInt();
+		        int totalMinutes = n + (n- 1)/(k-1);
 		        
 		        System.out.println(totalMinutes);
 		    }
