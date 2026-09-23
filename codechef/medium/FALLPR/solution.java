@@ -7,6 +7,7 @@ class Codechef
 	public static void main (String[] args) throws java.lang.Exception
 	{
 		// your code goes here
+
         Scanner sc = new Scanner(System.in);
 
         int T = sc.nextInt();
@@ -18,34 +19,26 @@ class Codechef
             long[] a = new long[N];
             long[] prefix = new long[N];
 
-            // Input + prefix sum
             for (int i = 0; i < N; i++) {
                 a[i] = sc.nextLong();
 
-                if (i == 0)
+                if (i == 0) {
                     prefix[i] = a[i];
-                else
+                } else {
                     prefix[i] = prefix[i - 1] + a[i];
-            }
-
-            // Already good?
-            boolean good = true;
-
-            for (int i = 0; i < N; i++) {
-                if (prefix[i] < 0) {
-                    good = false;
-                    break;
                 }
             }
 
-            if (good) {
-                System.out.println("YES");
-                continue;
+            // Prefix minimum
+            long[] prefixMin = new long[N];
+            prefixMin[0] = prefix[0];
+
+            for (int i = 1; i < N; i++) {
+                prefixMin[i] = Math.min(prefixMin[i - 1], prefix[i]);
             }
 
-            // suffix minimum of prefix sums
+            // Suffix minimum
             long[] suffixMin = new long[N];
-
             suffixMin[N - 1] = prefix[N - 1];
 
             for (int i = N - 2; i >= 0; i--) {
@@ -54,17 +47,30 @@ class Codechef
 
             boolean possible = false;
 
-            for (int remove = 0; remove < N; remove++) {
+            // No deletion
+            if (prefixMin[N - 1] >= 0) {
+                possible = true;
+            }
 
-                // Prefix before removed element must already be >= 0
-                if (remove > 0 && prefix[remove - 1] < 0)
-                    continue;
+            // Try deleting one element
+            if (!possible) {
 
-                // After removing a[remove],
-                // every later prefix becomes prefix[i] - a[remove]
-                if (suffixMin[remove] - a[remove] >= 0) {
-                    possible = true;
-                    break;
+                for (int remove = 0; remove < N; remove++) {
+
+                    // All prefix sums BEFORE removed element
+                    // must be non-negative.
+                    if (remove > 0 && prefixMin[remove - 1] < 0) {
+                        continue;
+                    }
+
+                    // Prefix sums after deletion
+                    long minimumAfterDeletion =
+                            suffixMin[remove] - a[remove];
+
+                    if (minimumAfterDeletion >= 0) {
+                        possible = true;
+                        break;
+                    }
                 }
             }
 
@@ -72,5 +78,6 @@ class Codechef
         }
 
         sc.close();
-    }
+
+	}
 }
