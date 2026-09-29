@@ -59,7 +59,7 @@ Chef earns no marks and loses $5 \times 2=10$ marks. His final score is $-10$, w
 **Language:** Java  
 **Runtime:** N/A  
 **Memory:** N/A  
-**Submitted:** 2026-09-29T03:57:53.103Z  
+**Submitted:** 2026-09-29T03:59:10.389Z  
 
 ```java
 import java.util.*;
